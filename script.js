@@ -168,6 +168,44 @@ function bindContactForm() {
   });
 }
 
+function bindCareTools() {
+  const fontButtons = [...document.querySelectorAll("[data-font-control]")];
+  const contrastButton = document.querySelector("[data-contrast-control]");
+  const scales = [0.94, 1, 1.12, 1.24];
+  let scaleIndex = Number(localStorage.getItem("silverRunFontScale") || "1");
+  let highContrast = localStorage.getItem("silverRunHighContrast") === "true";
+
+  const sync = () => {
+    scaleIndex = Math.max(0, Math.min(scales.length - 1, scaleIndex));
+    document.documentElement.style.setProperty("--font-scale", scales[scaleIndex]);
+    document.body.classList.toggle("high-contrast", highContrast);
+    fontButtons.forEach((button) => {
+      button.classList.toggle(
+        "active",
+        (button.dataset.fontControl === "smaller" && scaleIndex === 0) ||
+          (button.dataset.fontControl === "larger" && scaleIndex >= 2),
+      );
+    });
+    contrastButton?.classList.toggle("active", highContrast);
+    localStorage.setItem("silverRunFontScale", String(scaleIndex));
+    localStorage.setItem("silverRunHighContrast", String(highContrast));
+  };
+
+  fontButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      scaleIndex += button.dataset.fontControl === "larger" ? 1 : -1;
+      sync();
+    });
+  });
+
+  contrastButton?.addEventListener("click", () => {
+    highContrast = !highContrast;
+    sync();
+  });
+
+  sync();
+}
+
 renderServices();
 renderFacilityInfo();
 bindGallery({
@@ -183,3 +221,4 @@ bindGallery({
 bindHeader();
 bindTabs();
 bindContactForm();
+bindCareTools();

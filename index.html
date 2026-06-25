@@ -12,9 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260617-mobile-polish-2" />
-    <script src="./site-data.js?v=20260617-mobile-polish-2" defer></script>
-    <script src="./script.js?v=20260617-mobile-polish-2" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260625-care-redesign" />
+    <script src="./site-data.js?v=20260625-care-redesign" defer></script>
+    <script src="./script.js?v=20260625-care-redesign" defer></script>
   </head>
   <body>
     <header class="site-header" data-header>
@@ -42,16 +42,35 @@
     </div>
 
     <main id="top">
+      <aside class="care-tools" aria-label="어르신 배려 보기 설정">
+        <strong>보기 편하게</strong>
+        <div class="care-tool-group">
+          <button type="button" data-font-control="smaller">작게</button>
+          <button type="button" data-font-control="larger">크게</button>
+          <button type="button" data-contrast-control>고대비</button>
+        </div>
+      </aside>
+
       <section class="hero video-hero" aria-label="실버런 주야간보호센터 메인">
         <video autoplay muted loop playsinline preload="auto">
           <source src="./public/assets/hero-main-video.mp4" type="video/mp4" />
         </video>
         <div class="hero-shade"></div>
-        <div class="hero-logo-wrap">
+        <div class="hero-logo-wrap hero-content">
+          <p class="hero-kicker">남양주 평내호평역 인근 주·야간보호센터</p>
           <h1 class="hero-logo-title">
             <img src="./public/assets/silver-run-logo-cropped.svg" alt="실버런 주야간보호센터" />
           </h1>
           <p class="hero-subtitle">어르신이 편안하게 머무는 실버런</p>
+          <div class="hero-points" aria-label="실버런 핵심 안내">
+            <span>스마트 운동재활</span>
+            <span>전문 돌봄</span>
+            <span>상담 예약 가능</span>
+          </div>
+          <div class="hero-actions">
+            <a class="filled-button primary-cta" href="tel:010-3141-9988">전화 상담하기</a>
+            <a class="outline-button" href="#admission">입소 안내 보기</a>
+          </div>
           <p class="hero-scroll-cue">스크롤해서 더 많은 내용 보기</p>
         </div>
       </section>
@@ -68,6 +87,26 @@
             실버런 주야간보호센터는 <strong>스마트 운동재활 시스템</strong>과 <strong>전문 돌봄 서비스</strong>를 통해
             어르신의 건강한 일상 회복을 돕습니다.
           </p>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="보호자 안심 안내">
+        <div class="section-inner trust-grid">
+          <article>
+            <span>01</span>
+            <strong>하루 상태 공유</strong>
+            <p>식사, 활동, 컨디션을 보호자가 안심할 수 있도록 세심하게 안내합니다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>안전한 운동재활</strong>
+            <p>슬링과 워킹레일 기반으로 어르신 상태에 맞춰 무리 없이 진행합니다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>방문 상담 환영</strong>
+            <p>입소 전 시설을 둘러보고 생활 동선을 직접 확인하실 수 있습니다.</p>
+          </article>
         </div>
       </section>
 
@@ -378,5 +417,11 @@
       <p>주소 : 경기도 남양주시 경춘로 1256번길 9, 강남프라자 10층 1003호</p>
       <p>© SILVER RUN DAYLIGHT CARE CENTER. ALL RIGHTS RESERVED</p>
     </footer>
+
+    <nav class="quick-contact" aria-label="빠른 상담">
+      <a href="tel:010-3141-9988">전화 상담</a>
+      <a href="#contact">문의 남기기</a>
+      <a href="#location">오시는 길</a>
+    </nav>
   </body>
 </html>
