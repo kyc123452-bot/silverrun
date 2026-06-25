@@ -169,16 +169,15 @@ function bindContactForm() {
 }
 
 function bindCareTools() {
+  const widget = document.querySelector("[data-care-widget]");
+  const toggle = document.querySelector("[data-care-toggle]");
   const fontButtons = [...document.querySelectorAll("[data-font-control]")];
-  const contrastButton = document.querySelector("[data-contrast-control]");
   const scales = [0.94, 1, 1.12, 1.24];
   let scaleIndex = Number(localStorage.getItem("silverRunFontScale") || "1");
-  let highContrast = localStorage.getItem("silverRunHighContrast") === "true";
 
   const sync = () => {
     scaleIndex = Math.max(0, Math.min(scales.length - 1, scaleIndex));
     document.documentElement.style.setProperty("--font-scale", scales[scaleIndex]);
-    document.body.classList.toggle("high-contrast", highContrast);
     fontButtons.forEach((button) => {
       button.classList.toggle(
         "active",
@@ -186,21 +185,27 @@ function bindCareTools() {
           (button.dataset.fontControl === "larger" && scaleIndex >= 2),
       );
     });
-    contrastButton?.classList.toggle("active", highContrast);
     localStorage.setItem("silverRunFontScale", String(scaleIndex));
-    localStorage.setItem("silverRunHighContrast", String(highContrast));
   };
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = widget.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "상담 메뉴 닫기" : "상담 메뉴 열기");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!widget || widget.contains(event.target)) return;
+    widget.classList.remove("open");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "상담 메뉴 열기");
+  });
 
   fontButtons.forEach((button) => {
     button.addEventListener("click", () => {
       scaleIndex += button.dataset.fontControl === "larger" ? 1 : -1;
       sync();
     });
-  });
-
-  contrastButton?.addEventListener("click", () => {
-    highContrast = !highContrast;
-    sync();
   });
 
   sync();
