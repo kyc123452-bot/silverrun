@@ -2536,16 +2536,20 @@ body.high-contrast .trust-strip article {
   }
 }
 
-/* Hero keyword and CTA polish */
+/* Clean hero keywords and brand philosophy */
 .hero-points {
-  gap: 0;
-  margin-top: 16px;
-  padding: 10px 16px;
-  background: rgba(10, 18, 30, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(10px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 0;
+  max-width: min(88vw, 620px);
+  margin-top: 14px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .hero-points span {
@@ -2554,15 +2558,15 @@ body.high-contrast .trust-strip article {
   align-items: center;
   justify-content: center;
   min-height: auto;
-  padding: 0 14px;
-  color: rgba(255, 255, 255, 0.9);
+  padding: 0 13px;
+  color: rgba(255, 255, 255, 0.82);
   background: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.35;
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .hero-points span::before {
@@ -2571,8 +2575,8 @@ body.high-contrast .trust-strip article {
   left: 0;
   top: 50%;
   width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.28);
+  height: 11px;
+  background: rgba(255, 255, 255, 0.24);
   transform: translateY(-50%);
 }
 
@@ -2582,6 +2586,59 @@ body.high-contrast .trust-strip article {
 
 .hero-points span:first-child::before {
   display: none;
+}
+
+.philosophy {
+  min-height: auto;
+  overflow: hidden;
+  padding: clamp(88px, 11vw, 150px) 0;
+}
+
+.philosophy > img {
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+  opacity: 0.62;
+}
+
+.philosophy .section-overlay {
+  background: linear-gradient(90deg, rgba(7, 21, 40, 0.9), rgba(7, 21, 40, 0.7));
+}
+
+.philosophy-lines {
+  position: relative;
+  inset: auto;
+  align-items: start;
+  gap: clamp(28px, 4vw, 56px);
+  padding: 0 24px;
+}
+
+.philosophy-lines p {
+  min-height: auto;
+  padding: 0 0 0 20px;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.philosophy-lines em {
+  margin-bottom: 2px;
+  font-size: clamp(34px, 4.4vw, 64px);
+}
+
+.philosophy-lines strong {
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1.28;
+}
+
+.philosophy-lines span {
+  max-width: 260px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(15px, 1.45vw, 18px);
+  line-height: 1.7;
 }
 
 .hero-actions {
@@ -2611,32 +2668,21 @@ body.high-contrast .trust-strip article {
 @media (max-width: 760px) {
   .hero-points {
     display: grid;
-    width: min(100%, 318px);
+    width: min(100%, 292px);
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    justify-content: center;
-    margin-top: 16px;
-    padding: 12px 14px;
+    gap: 4px 18px;
+    margin-top: 13px;
   }
 
   .hero-points span {
-    min-height: 26px;
-    padding: 0 10px;
+    min-height: auto;
+    padding: 0;
     font-size: 12.5px;
+    line-height: 1.45;
   }
 
   .hero-points span::before {
     display: none;
-  }
-
-  .hero-points span:nth-child(even) {
-    border-left: 1px solid rgba(255, 255, 255, 0.18);
-  }
-
-  .hero-points span:nth-child(n + 3) {
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
-    padding-top: 8px;
-    margin-top: 8px;
   }
 
   .hero-actions {
@@ -2650,17 +2696,57 @@ body.high-contrast .trust-strip article {
     padding: 12px 12px;
     font-size: 14px;
   }
+
+  .philosophy {
+    padding: 76px 0 82px;
+    overflow: hidden;
+  }
+
+  .philosophy > img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .philosophy .section-overlay {
+    background: linear-gradient(180deg, rgba(7, 21, 40, 0.9), rgba(7, 21, 40, 0.78));
+  }
+
+  .philosophy-lines {
+    position: relative;
+    inset: auto;
+    width: min(100% - 48px, 420px);
+    gap: 34px;
+    padding: 0;
+  }
+
+  .philosophy-lines p {
+    padding-left: 18px;
+  }
+
+  .philosophy-lines em {
+    font-size: 38px;
+  }
+
+  .philosophy-lines strong {
+    font-size: 23px;
+  }
+
+  .philosophy-lines span {
+    max-width: none;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 420px) {
   .hero-points {
-    width: min(100%, 314px);
-    padding: 11px 12px;
+    width: min(100%, 278px);
   }
 
   .hero-points span {
-    min-height: 25px;
-    padding: 0 8px;
+    min-height: auto;
+    padding: 0;
     font-size: 12px;
   }
 }
