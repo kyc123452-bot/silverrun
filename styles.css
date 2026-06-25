@@ -1665,10 +1665,10 @@ body.high-contrast .trust-strip article {
 }
 
 .hero-subtitle {
-  max-width: 620px;
+  max-width: 520px;
   padding: 0;
-  font-size: clamp(28px, 4.6vw, 58px);
-  line-height: 1.12;
+  font-size: clamp(22px, 3.2vw, 40px);
+  line-height: 1.22;
   font-weight: 900;
   text-shadow: 0 16px 42px rgba(0, 0, 0, 0.34);
 }
@@ -2148,8 +2148,8 @@ body.high-contrast .trust-strip article {
   }
 
   .hero-subtitle {
-    font-size: clamp(28px, 9vw, 40px);
-    line-height: 1.16;
+    font-size: clamp(23px, 7.4vw, 32px);
+    line-height: 1.22;
   }
 
   .hero-points {
