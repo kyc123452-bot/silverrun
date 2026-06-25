@@ -2375,8 +2375,8 @@ body.high-contrast .trust-strip article {
 .care-tools {
   position: fixed;
   z-index: 35;
-  left: clamp(18px, 3vw, 34px);
-  right: auto;
+  left: auto;
+  right: clamp(18px, 3vw, 34px);
   bottom: max(22px, env(safe-area-inset-bottom));
   display: block;
   width: auto;
@@ -2392,6 +2392,8 @@ body.high-contrast .trust-strip article {
 .care-widget-toggle {
   display: grid;
   place-items: center;
+  align-content: center;
+  gap: 2px;
   width: 72px;
   height: 72px;
   padding: 0;
@@ -2406,6 +2408,18 @@ body.high-contrast .trust-strip article {
   cursor: pointer;
 }
 
+.care-widget-icon {
+  display: block;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.care-widget-label {
+  display: block;
+  font-size: 13px;
+  line-height: 1;
+}
+
 .care-widget-toggle::after {
   content: "";
   position: absolute;
@@ -2417,7 +2431,8 @@ body.high-contrast .trust-strip article {
 
 .care-tool-panel {
   position: absolute;
-  left: 0;
+  left: auto;
+  right: 0;
   bottom: 88px;
   display: grid;
   gap: 8px;
@@ -2430,7 +2445,7 @@ body.high-contrast .trust-strip article {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px) scale(0.96);
-  transform-origin: left bottom;
+  transform-origin: right bottom;
   transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
 }
 
@@ -2477,8 +2492,8 @@ body.high-contrast .trust-strip article {
   }
 
   .care-tools {
-    left: 18px;
-    right: auto;
+    left: auto;
+    right: 18px;
     bottom: max(18px, env(safe-area-inset-bottom));
     width: auto;
     padding: 0;
@@ -2488,6 +2503,14 @@ body.high-contrast .trust-strip article {
     width: 64px;
     height: 64px;
     font-size: 16px;
+  }
+
+  .care-widget-icon {
+    font-size: 23px;
+  }
+
+  .care-widget-label {
+    font-size: 12px;
   }
 
   .care-tool-panel {
