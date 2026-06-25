@@ -2538,10 +2538,11 @@ body.high-contrast .trust-strip article {
 
 /* Clean hero keywords and brand philosophy */
 .hero-points {
+  --hero-keyword-gap: clamp(14px, 2.2vw, 24px);
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  gap: clamp(14px, 2.2vw, 24px);
+  gap: var(--hero-keyword-gap);
   width: max-content;
   max-width: calc(100vw - 36px);
   margin-top: 14px;
@@ -2576,8 +2577,16 @@ body.high-contrast .trust-strip article {
 }
 
 .hero-points span::before {
-  content: none !important;
-  display: none !important;
+  content: "";
+  position: absolute;
+  left: calc((var(--hero-keyword-gap) / -2) - 2px);
+  top: 50%;
+  display: block;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  transform: translateY(-50%);
 }
 
 .hero-points span:first-child {
@@ -2667,11 +2676,12 @@ body.high-contrast .trust-strip article {
 
 @media (max-width: 760px) {
   .hero-points {
+    --hero-keyword-gap: clamp(7px, 2.2vw, 12px);
     display: flex;
     flex-wrap: nowrap;
     width: max-content;
     max-width: calc(100vw - 36px);
-    gap: clamp(7px, 2.2vw, 12px);
+    gap: var(--hero-keyword-gap);
     margin-top: 13px;
   }
 
@@ -2683,7 +2693,9 @@ body.high-contrast .trust-strip article {
   }
 
   .hero-points span::before {
-    display: none;
+    left: calc((var(--hero-keyword-gap) / -2) - 1.5px);
+    width: 2.5px;
+    height: 2.5px;
   }
 
   .hero-actions {
@@ -2742,9 +2754,10 @@ body.high-contrast .trust-strip article {
 
 @media (max-width: 420px) {
   .hero-points {
+    --hero-keyword-gap: 8px;
     width: max-content;
     max-width: calc(100vw - 28px);
-    gap: 7px;
+    gap: var(--hero-keyword-gap);
   }
 
   .hero-points span {
