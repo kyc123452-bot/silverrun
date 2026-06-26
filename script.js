@@ -172,7 +172,7 @@ function bindCareTools() {
   const widget = document.querySelector("[data-care-widget]");
   const toggle = document.querySelector("[data-care-toggle]");
   const fontButtons = [...document.querySelectorAll("[data-font-control]")];
-  const scales = [0.94, 1, 1.12, 1.24];
+  const scales = [0.94, 1, 1.18, 1.36];
   let scaleIndex = Number(localStorage.getItem("silverRunFontScale") || "1");
 
   const sync = () => {

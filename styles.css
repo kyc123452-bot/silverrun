@@ -2387,7 +2387,9 @@ body.high-contrast .trust-strip article {
   left: auto;
   right: clamp(18px, 3vw, 34px);
   bottom: max(22px, env(safe-area-inset-bottom));
-  display: block;
+  display: grid;
+  justify-items: end;
+  gap: 10px;
   width: auto;
   padding: 0;
   color: var(--navy);
@@ -2396,6 +2398,39 @@ body.high-contrast .trust-strip article {
   border-radius: 0;
   box-shadow: none;
   backdrop-filter: none;
+}
+
+.care-font-tools {
+  position: absolute;
+  right: 0;
+  bottom: 82px;
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(23, 111, 186, 0.16);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(25, 46, 76, 0.12);
+}
+
+.care-font-tools button {
+  min-height: 34px;
+  min-width: 72px;
+  padding: 0 11px;
+  color: var(--navy);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.care-font-tools button.active {
+  color: #fff;
+  background: var(--sky-deep);
 }
 
 .care-widget-toggle {
@@ -2442,7 +2477,7 @@ body.high-contrast .trust-strip article {
   position: absolute;
   left: auto;
   right: 0;
-  bottom: 88px;
+  bottom: 136px;
   display: grid;
   gap: 8px;
   width: 156px;
@@ -2508,6 +2543,19 @@ body.high-contrast .trust-strip article {
     padding: 0;
   }
 
+  .care-font-tools {
+    bottom: 74px;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .care-font-tools button {
+    min-height: 32px;
+    min-width: 64px;
+    padding: 0 9px;
+    font-size: 11px;
+  }
+
   .care-widget-toggle {
     width: 64px;
     height: 64px;
@@ -2523,7 +2571,7 @@ body.high-contrast .trust-strip article {
   }
 
   .care-tool-panel {
-    bottom: 80px;
+    bottom: 124px;
     width: 150px;
   }
 }
