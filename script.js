@@ -174,18 +174,18 @@ function bindCareTools() {
   const fontButtons = [...document.querySelectorAll("[data-font-control]")];
   const scales = [0.94, 1, 1.18, 1.36];
   let scaleIndex = Number(localStorage.getItem("silverRunFontScale") || "1");
+  let activeControl = localStorage.getItem("silverRunFontControl") || "";
 
   const sync = () => {
     scaleIndex = Math.max(0, Math.min(scales.length - 1, scaleIndex));
     document.documentElement.style.setProperty("--font-scale", scales[scaleIndex]);
     fontButtons.forEach((button) => {
-      button.classList.toggle(
-        "active",
-        (button.dataset.fontControl === "smaller" && scaleIndex === 0) ||
-          (button.dataset.fontControl === "larger" && scaleIndex >= 2),
-      );
+      const isActive = button.dataset.fontControl === activeControl;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
     });
     localStorage.setItem("silverRunFontScale", String(scaleIndex));
+    localStorage.setItem("silverRunFontControl", activeControl);
   };
 
   toggle?.addEventListener("click", () => {
@@ -203,7 +203,8 @@ function bindCareTools() {
 
   fontButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      scaleIndex += button.dataset.fontControl === "larger" ? 1 : -1;
+      activeControl = button.dataset.fontControl;
+      scaleIndex += activeControl === "larger" ? 1 : -1;
       sync();
     });
   });

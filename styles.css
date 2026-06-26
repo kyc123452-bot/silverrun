@@ -2404,18 +2404,18 @@ body.high-contrast .trust-strip article {
   position: absolute;
   right: 0;
   bottom: 82px;
-  display: inline-flex;
-  gap: 6px;
-  padding: 6px;
+  display: grid;
+  gap: 5px;
+  padding: 7px;
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(23, 111, 186, 0.16);
-  border-radius: 999px;
+  border-radius: 18px;
   box-shadow: 0 12px 28px rgba(25, 46, 76, 0.12);
 }
 
 .care-font-tools button {
   min-height: 34px;
-  min-width: 72px;
+  min-width: 78px;
   padding: 0 11px;
   color: var(--navy);
   background: transparent;
@@ -2431,6 +2431,7 @@ body.high-contrast .trust-strip article {
 .care-font-tools button.active {
   color: #fff;
   background: var(--sky-deep);
+  box-shadow: 0 8px 18px rgba(23, 111, 186, 0.22);
 }
 
 .care-widget-toggle {
@@ -2545,13 +2546,14 @@ body.high-contrast .trust-strip article {
 
   .care-font-tools {
     bottom: 74px;
-    gap: 5px;
-    padding: 5px;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 16px;
   }
 
   .care-font-tools button {
     min-height: 32px;
-    min-width: 64px;
+    min-width: 74px;
     padding: 0 9px;
     font-size: 11px;
   }
