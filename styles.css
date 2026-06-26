@@ -1772,43 +1772,52 @@ body.high-contrast .trust-strip article {
 .trust-strip {
   position: relative;
   z-index: 2;
-  margin-top: -54px;
-  padding-bottom: 56px;
+  margin-top: 0;
+  padding: clamp(54px, 7vw, 82px) 0;
+  background: #fff;
 }
 
 .trust-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .trust-strip article {
-  min-height: 168px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(23, 111, 186, 0.16);
+  min-height: 178px;
+  display: grid;
+  align-content: start;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid rgba(28, 39, 61, 0.1);
   border-radius: 8px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 14px 36px rgba(25, 46, 76, 0.06);
 }
 
 .trust-strip span {
   display: inline-flex;
+  width: fit-content;
   margin-bottom: 18px;
+  padding-bottom: 5px;
   color: var(--sky-deep);
+  border-bottom: 2px solid rgba(23, 111, 186, 0.22);
+  font-size: 15px;
   font-weight: 900;
+  line-height: 1;
 }
 
 .trust-strip strong {
   display: block;
   color: var(--navy);
-  font-size: 23px;
+  font-size: 22px;
   line-height: 1.28;
 }
 
 .trust-strip p {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   color: var(--muted);
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.72;
 }
 
 .page-hero,
@@ -2081,8 +2090,8 @@ body.high-contrast .trust-strip article {
 
   .trust-strip {
     margin-top: 0;
-    padding: 26px 0 54px;
-    background: #f4f9fd;
+    padding: 48px 0 56px;
+    background: #fff;
   }
 
   .contact-grid > div:first-child {
