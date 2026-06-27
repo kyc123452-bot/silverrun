@@ -1067,6 +1067,34 @@ video {
   line-height: 1.55;
 }
 
+.service-area {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(23, 111, 186, 0.14);
+}
+
+.service-area h3 {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-size: 18px;
+}
+
+.location .service-area p {
+  margin: 0;
+  color: #344054;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.service-area small {
+  display: block;
+  margin-top: 9px;
+  color: #687386;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 .blog-button {
   display: inline-flex;
   align-items: center;
