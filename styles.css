@@ -1036,6 +1036,51 @@ video {
   line-height: 1.55;
 }
 
+.blog-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 14px;
+  color: #fff;
+  background: #03a94f;
+  border: 1px solid #039947;
+  border-radius: 6px;
+  box-shadow: 0 8px 18px rgba(3, 169, 79, 0.18);
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.blog-button:hover {
+  color: #fff;
+  background: #028f43;
+  box-shadow: 0 10px 22px rgba(3, 169, 79, 0.24);
+  transform: translateY(-1px);
+}
+
+.blog-button-mark {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  background: #fff;
+  border-radius: 4px;
+  color: #03a94f;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.blog-button-arrow {
+  margin-left: 2px;
+  font-size: 17px;
+  line-height: 1;
+}
+
 .map-card {
   display: block;
   overflow: hidden;
@@ -1430,6 +1475,11 @@ video {
   .location dl div {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+
+  .blog-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .site-footer {
