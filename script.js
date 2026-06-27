@@ -163,8 +163,7 @@ function bindContactForm() {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    form.reset();
-    alert("문의가 접수되었습니다. 실제 전송 연동은 다음 개발 단계에서 연결하면 됩니다.");
+    alert("현재 온라인 문의 접수 기능은 준비 중입니다. 010-3141-9988로 전화 상담해 주세요.");
   });
 }
 
