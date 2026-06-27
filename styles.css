@@ -2501,9 +2501,10 @@ body.high-contrast .trust-strip article {
 }
 
 .care-font-tools {
-  position: absolute;
-  right: 0;
-  bottom: 82px;
+  position: fixed;
+  left: clamp(18px, 3vw, 34px);
+  right: auto;
+  bottom: max(22px, env(safe-area-inset-bottom));
   display: grid;
   gap: 5px;
   padding: 7px;
@@ -2640,7 +2641,9 @@ body.high-contrast .trust-strip article {
   }
 
   .care-font-tools {
-    bottom: 74px;
+    left: 18px;
+    right: auto;
+    bottom: max(18px, env(safe-area-inset-bottom));
     gap: 4px;
     padding: 6px;
     border-radius: 16px;
