@@ -1673,6 +1673,10 @@ body.high-contrast .trust-strip article {
   text-shadow: 0 16px 42px rgba(0, 0, 0, 0.34);
 }
 
+.hero-mobile-title-image {
+  display: none;
+}
+
 .hero-points {
   display: flex;
   flex-wrap: wrap;
@@ -2297,6 +2301,21 @@ body.high-contrast .trust-strip article {
 
   .hero-scroll-cue {
     display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-logo-title,
+  .hero-subtitle {
+    display: none;
+  }
+
+  .hero-mobile-title-image {
+    display: block;
+    width: min(84vw, 390px);
+    max-height: 31svh;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.28));
   }
 }
 
