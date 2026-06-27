@@ -161,9 +161,39 @@ function bindContactForm() {
   const form = document.querySelector("[data-contact-form]");
   if (!form) return;
 
-  form.addEventListener("submit", (event) => {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const status = form.querySelector("[data-contact-status]");
+  const defaultButtonText = submitButton?.textContent || "메시지 보내기";
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    alert("현재 온라인 문의 접수 기능은 준비 중입니다. 010-3141-9988로 전화 상담해 주세요.");
+
+    if (!form.reportValidity()) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "전송 중...";
+    status.className = "contact-form-status";
+    status.textContent = "문의를 안전하게 전송하고 있습니다.";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      form.reset();
+      status.classList.add("success");
+      status.textContent = "문의가 접수되었습니다. 확인 후 연락드리겠습니다.";
+    } catch {
+      status.classList.add("error");
+      status.textContent = "전송하지 못했습니다. 잠시 후 다시 시도하거나 전화로 문의해 주세요.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = defaultButtonText;
+    }
   });
 }
 

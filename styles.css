@@ -995,7 +995,7 @@ video {
   cursor: pointer;
 }
 
-.contact-form .contact-form-note {
+.contact-form .contact-form-status {
   margin: -4px 0 0;
   color: #687386;
   font-size: 13px;
@@ -1003,11 +1003,27 @@ video {
   text-align: center;
 }
 
-.contact-form-note a {
-  color: var(--sky-deep);
+.contact-form-status.success {
+  color: #08783e;
   font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+}
+
+.contact-form-status.error {
+  color: #b42318;
+  font-weight: 800;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
 }
 
 .location {
