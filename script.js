@@ -18,8 +18,7 @@ const services = [
     description: "치매 예방 활동과 정서적 안정을 돕는 다양한 프로그램",
   },
   {
-    image:
-      "old-senior-asian-friends-retired-people-hapiness-positive-laugh-smile-conversation-together-living-room-nursing-home-seniors-participating-group-activities-adult-daycare-center_1760605879161.jpg",
+    image: "service-daily-support-20260628.jpg",
     title: "생활 지원 서비스",
     description: "일상 속 편안함을 위한 맞춤형 지원",
   },
