@@ -1,4 +1,5 @@
 const assets = "./public/assets/";
+document.documentElement.classList.add("js");
 
 const services = [
   {
@@ -31,6 +32,7 @@ const services = [
 ];
 
 const pageData = window.SU_DAILY_DATA || {};
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function renderServices() {
   const mount = document.querySelector("[data-services]");
@@ -75,25 +77,42 @@ function bindHeader() {
   const header = document.querySelector("[data-header]");
   const button = document.querySelector("[data-menu-button]");
   const menu = document.querySelector("[data-mobile-menu]");
+  if (!header || !button || !menu) return;
 
   const syncHeader = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
+
+  const setMenu = (isOpen, restoreFocus = false) => {
+    menu.classList.toggle("open", isOpen);
+    header.classList.toggle("menu-open", isOpen);
+    document.body.classList.toggle("mobile-menu-open", isOpen);
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.setAttribute("aria-label", isOpen ? "메뉴 닫기" : "메뉴 열기");
+    if (restoreFocus) button.focus();
   };
 
   window.addEventListener("scroll", syncHeader, { passive: true });
   syncHeader();
 
   button.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("open");
-    header.classList.toggle("menu-open", isOpen);
-    button.setAttribute("aria-label", isOpen ? "메뉴 닫기" : "메뉴 열기");
+    setMenu(!menu.classList.contains("open"));
   });
 
   menu.addEventListener("click", (event) => {
     if (event.target.matches("a")) {
-      menu.classList.remove("open");
-      header.classList.remove("menu-open");
+      setMenu(false);
     }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.classList.contains("open")) {
+      setMenu(false, true);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760 && menu.classList.contains("open")) setMenu(false);
   });
 }
 
@@ -114,11 +133,18 @@ function renderFilterButtons(mount, items, activeCategory) {
 function renderGallery(mount, items, category) {
   const visibleItems = items.filter((item) => item.title === category && item.image);
 
+  mount.setAttribute("aria-live", "polite");
+  mount.setAttribute("aria-label", `${category} 사진`);
   mount.innerHTML = visibleItems
     .map(
       (item) => `
-        <figure>
-          <img src="${assets}${encodeURI(item.image)}" alt="${item.name || item.title} 시설 이미지" loading="lazy" />
+        <figure class="gallery-item">
+          <img
+            src="${assets}${encodeURI(item.image)}"
+            alt="${item.name || item.title} 시설 이미지"
+            loading="lazy"
+            decoding="async"
+          />
           ${item.description ? `<figcaption>${item.description}</figcaption>` : ""}
         </figure>
       `,
@@ -134,27 +160,176 @@ function bindGallery({ filterSelector, gallerySelector, items }) {
   let activeCategory = items[0].title || "기타";
   renderFilterButtons(filters, items, activeCategory);
   renderGallery(gallery, items, activeCategory);
+  filters.querySelectorAll("button[data-category]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.category === activeCategory));
+  });
+
+  let transitionTimer;
 
   filters.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-category]");
-    if (!button) return;
+    if (!button || button.dataset.category === activeCategory) return;
+
     activeCategory = button.dataset.category;
-    renderFilterButtons(filters, items, activeCategory);
-    renderGallery(gallery, items, activeCategory);
+    filters.querySelectorAll("button[data-category]").forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+
+    window.clearTimeout(transitionTimer);
+    gallery.classList.add("is-changing");
+    gallery.setAttribute("aria-busy", "true");
+    transitionTimer = window.setTimeout(
+      () => {
+        renderGallery(gallery, items, activeCategory);
+        gallery.setAttribute("aria-busy", "false");
+        requestAnimationFrame(() => gallery.classList.remove("is-changing"));
+      },
+      prefersReducedMotion ? 0 : 140,
+    );
   });
 }
 
 function bindTabs() {
   const tabs = [...document.querySelectorAll("[data-admission-tab]")];
   const panels = [...document.querySelectorAll("[data-admission-panel]")];
+  if (!tabs.length || !panels.length) return;
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const key = tab.dataset.admissionTab;
-      tabs.forEach((item) => item.classList.toggle("active", item === tab));
-      panels.forEach((panel) => panel.classList.toggle("active", panel.dataset.admissionPanel === key));
+  const activateTab = (tab, moveFocus = false) => {
+    const key = tab.dataset.admissionTab;
+
+    tabs.forEach((item) => {
+      const isActive = item === tab;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+      item.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.admissionPanel === key;
+      panel.classList.toggle("active", isActive);
+      panel.hidden = !isActive;
+    });
+
+    if (moveFocus) tab.focus();
+  };
+
+  tabs.forEach((tab, index) => {
+    const key = tab.dataset.admissionTab;
+    const panel = panels.find((item) => item.dataset.admissionPanel === key);
+    tab.id = `admission-tab-${key}`;
+    tab.setAttribute("aria-controls", `admission-panel-${key}`);
+    panel.id = `admission-panel-${key}`;
+    panel.setAttribute("role", "tabpanel");
+    panel.setAttribute("aria-labelledby", tab.id);
+
+    tab.addEventListener("click", () => activateTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex = index;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (nextIndex === index) return;
+      event.preventDefault();
+      activateTab(tabs[nextIndex], true);
     });
   });
+
+  activateTab(tabs.find((tab) => tab.classList.contains("active")) || tabs[0]);
+}
+
+function bindScrollExperience() {
+  const progress = document.createElement("div");
+  progress.className = "scroll-progress";
+  progress.setAttribute("aria-hidden", "true");
+  document.body.prepend(progress);
+
+  let scrollTicking = false;
+  const updateScroll = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+    progress.style.transform = `scaleX(${ratio})`;
+    scrollTicking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(updateScroll);
+    },
+    { passive: true },
+  );
+  updateScroll();
+
+  const revealGroups = [
+    ".care-copy > *",
+    ".trust-strip article",
+    ".greeting-detail .eyebrow, .greeting-detail h2, .greeting-detail .text-card",
+    ".services .section-inner > h2, .service-card",
+    ".admission-content > .badge, .admission-content > h2, .tabs, .tab-panel",
+    ".facility-info-card, .gallery-block",
+    ".contact-grid > *",
+    ".location-grid > *",
+    ".philosophy-lines p",
+  ];
+
+  const revealItems = revealGroups.flatMap((selector) => [...document.querySelectorAll(selector)]);
+  revealItems.forEach((item, index) => {
+    item.classList.add("reveal-item");
+    item.style.setProperty("--reveal-delay", `${(index % 5) * 55}ms`);
+  });
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    revealItems.forEach((item) => revealObserver.observe(item));
+  }
+
+  const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]')];
+  const sectionMap = new Map(
+    navLinks.map((link) => {
+      const id = link.getAttribute("href");
+      return [id, document.querySelector(id)];
+    }),
+  );
+
+  const setCurrentSection = (id) => {
+    navLinks.forEach((link) => {
+      const isCurrent = link.getAttribute("href") === id;
+      link.classList.toggle("is-current", isCurrent);
+      if (isCurrent) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  };
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const current = entries.find((entry) => entry.isIntersecting);
+        if (current) setCurrentSection(`#${current.target.id}`);
+      },
+      { rootMargin: "-18% 0px -68% 0px", threshold: 0 },
+    );
+    sectionMap.forEach((section) => {
+      if (section) sectionObserver.observe(section);
+    });
+  }
+
+  requestAnimationFrame(() => document.body.classList.add("is-ready"));
 }
 
 function bindContactForm() {
@@ -257,3 +432,4 @@ bindHeader();
 bindTabs();
 bindContactForm();
 bindCareTools();
+bindScrollExperience();

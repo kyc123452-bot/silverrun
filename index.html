@@ -44,10 +44,10 @@
     <link rel="apple-touch-icon" href="./public/assets/silverrun-favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260627-seo-service-areas" />
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260628-interaction-polish" />
     <script src="./site-data.js?v=20260627-seo-service-areas" defer></script>
-    <script src="./script.js?v=20260627-seo-service-areas" defer></script>
+    <script src="./script.js?v=20260628-interaction-polish" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -169,7 +169,13 @@
         <a href="#facility">시설 안내</a>
         <a href="#contact">상담 및 문의</a>
       </nav>
-      <button class="menu-button" type="button" data-menu-button aria-label="메뉴 열기">
+      <button
+        class="menu-button"
+        type="button"
+        data-menu-button
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+      >
         <span></span>
         <span></span>
       </button>
@@ -234,11 +240,11 @@
             <a class="filled-button primary-cta" href="tel:010-3141-9988">전화 상담하기</a>
             <a class="outline-button" href="#admission">입소 안내 보기</a>
           </div>
-          <p class="hero-scroll-cue">스크롤해서 더 많은 내용 보기</p>
+          <a class="hero-scroll-cue" href="#care-overview">스크롤해서 더 많은 내용 보기</a>
         </div>
       </section>
 
-      <section class="hero care-hero">
+      <section class="hero care-hero" id="care-overview">
         <img
           src="./public/assets/care-hero-sling-training-20260611.png"
           alt="슬링 운동재활 중인 어르신과 전문 케어 직원"
