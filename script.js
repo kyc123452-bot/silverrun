@@ -286,17 +286,45 @@ function bindScrollExperience() {
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   } else {
+    const resetBuffer = 96;
     const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            return;
+          }
+
+          const isFullyAbove = entry.boundingClientRect.bottom < -resetBuffer;
+          const isFullyBelow = entry.boundingClientRect.top > window.innerHeight + resetBuffer;
+          if (isFullyAbove || isFullyBelow) entry.target.classList.remove("is-visible");
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.08, rootMargin: "96px 0px" },
     );
     revealItems.forEach((item) => revealObserver.observe(item));
+
+    let revealResetTicking = false;
+    const resetRevealsOutsideViewport = () => {
+      revealItems.forEach((item) => {
+        if (!item.classList.contains("is-visible")) return;
+        const rect = item.getBoundingClientRect();
+        const isFullyAbove = rect.bottom <= -resetBuffer;
+        const isFullyBelow = rect.top >= window.innerHeight + resetBuffer;
+        if (isFullyAbove || isFullyBelow) item.classList.remove("is-visible");
+      });
+      revealResetTicking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (revealResetTicking) return;
+        revealResetTicking = true;
+        requestAnimationFrame(resetRevealsOutsideViewport);
+      },
+      { passive: true },
+    );
   }
 
   const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]')];
