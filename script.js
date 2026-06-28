@@ -8,8 +8,7 @@ const services = [
     description: "슬링, 워킹레일, 순환운동을 활용한 안전한 신체 기능 회복 프로그램",
   },
   {
-    image:
-      "asian-young-caregiver-caring-her-elderly-patient-senior-daycare-handicap-patient-wheelchair-hospital-talking-friendly-nurse-looking-cheerful-nurse-wheeling-senior-patient_1760420183851.jpg",
+    image: "service-medical-nursing-20260628.jpg",
     title: "의료·간호 서비스",
     description: "혈압, 당뇨, 투약 관리 등 어르신 건강 상태에 맞춘 세심한 관리",
   },
