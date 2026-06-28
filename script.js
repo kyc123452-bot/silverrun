@@ -13,7 +13,7 @@ const services = [
     description: "혈압, 당뇨, 투약 관리 등 어르신 건강 상태에 맞춘 세심한 관리",
   },
   {
-    image: "ChatGPT-Image-2025년-10월-16일-오후-05_51_02_1760604714476.png",
+    image: "service-cognitive-emotional-20260628.jpg",
     title: "인지·정서 지원 서비스",
     description: "치매 예방 활동과 정서적 안정을 돕는 다양한 프로그램",
   },
