@@ -769,10 +769,27 @@ video {
 
 .fee-table {
   width: 100%;
-  min-width: 660px;
+  min-width: 0;
+  table-layout: fixed;
   border-collapse: collapse;
   color: var(--navy);
   background: #fff;
+}
+
+.fee-table .time-col {
+  width: 34%;
+}
+
+.fee-table .grade-col {
+  width: 14%;
+}
+
+.fee-table .rate-col {
+  width: 24%;
+}
+
+.fee-table .copay-col {
+  width: 28%;
 }
 
 .fee-table th,
@@ -780,7 +797,9 @@ video {
   padding: 13px 14px;
   border-bottom: 1px solid var(--line);
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .fee-table th {
@@ -791,6 +810,10 @@ video {
 .fee-table td:first-child {
   text-align: left;
   font-weight: 800;
+}
+
+.fee-table-wrap {
+  overflow-x: hidden;
 }
 
 .facility {
@@ -1482,6 +1505,17 @@ video {
   .longterm-table td:first-child,
   .longterm-table th:first-child {
     width: auto;
+  }
+
+  .fee-table th,
+  .fee-table td {
+    padding: 10px 4px;
+    font-size: clamp(11px, calc(0.78rem * var(--font-scale)), 16px);
+    line-height: 1.4;
+  }
+
+  .fee-table td:first-child {
+    text-align: center;
   }
 
   .facility-info-grid,
@@ -2512,6 +2546,11 @@ body.high-contrast .trust-strip article {
 
   .text-card p {
     font-size: calc(1.16rem * var(--font-scale));
+  }
+
+  .fee-table-wrap .fee-table th,
+  .fee-table-wrap .fee-table td {
+    font-size: clamp(11px, calc(0.78rem * var(--font-scale)), 16px);
   }
 }
 
