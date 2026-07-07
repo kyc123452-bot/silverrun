@@ -4235,3 +4235,33 @@ body {
     padding-bottom: max(46px, calc(env(safe-area-inset-bottom) + 38px));
   }
 }
+
+/* Cap the overview section so tall mobile screens do not stretch it. */
+.care-hero {
+  min-height: clamp(520px, 68svh, 640px);
+}
+
+@media (max-width: 760px) {
+  .care-hero {
+    min-height: clamp(430px, 46svh, 560px);
+  }
+
+  .care-copy {
+    padding-bottom: max(34px, calc(env(safe-area-inset-bottom) + 28px));
+  }
+
+  .care-copy h2 {
+    font-size: clamp(25px, 7.2vw, 32px);
+  }
+
+  .care-copy > p:last-child {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .care-hero {
+    min-height: clamp(400px, 44svh, 500px);
+  }
+}
