@@ -4459,4 +4459,33 @@ body {
   .location-grid > div:first-child {
     padding-top: 6px;
   }
+
+  .video-hero .hero-content {
+    place-content: center;
+    justify-items: center;
+    text-align: center;
+    width: min(980px, calc(100% - 96px));
+  }
+
+  .video-hero .hero-kicker {
+    margin-bottom: 6px;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-bottom-color: rgba(255, 255, 255, 0.28);
+  }
+
+  .video-hero .hero-subtitle {
+    max-width: 780px;
+  }
+
+  .video-hero .hero-points,
+  .video-hero .hero-actions {
+    justify-content: center;
+  }
+
+  .video-hero .hero-scroll-cue {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
 }
