@@ -4393,3 +4393,70 @@ body {
     max-width: none;
   }
 }
+
+/* Desktop heading rhythm: calmer, centered section moments. */
+@media (min-width: 981px) {
+  .page-hero::after,
+  .admission-hero::after,
+  .facility-hero::after {
+    background: linear-gradient(180deg, rgba(10, 20, 34, 0.18), rgba(10, 20, 34, 0.58));
+  }
+
+  .page-hero-copy,
+  .admission-hero > div,
+  .facility-hero > div {
+    place-content: center;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .page-hero h2,
+  .admission-hero h2,
+  .facility-hero h2 {
+    max-width: 840px;
+  }
+
+  .greeting-detail .eyebrow,
+  .greeting-detail h2,
+  .services h2,
+  .admission-content > .badge,
+  .admission-content > h2 {
+    text-align: center;
+  }
+
+  .greeting-detail .text-card {
+    width: min(860px, 100%);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .facility .section-inner {
+    width: min(1120px, calc(100% - 72px));
+  }
+
+  .facility-info-card {
+    padding-right: clamp(12px, 3vw, 42px);
+    padding-left: clamp(12px, 3vw, 42px);
+  }
+
+  .gallery-heading {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .gallery-heading h3 {
+    font-size: clamp(30px, 3.4vw, 44px);
+  }
+
+  .gallery-filters {
+    justify-content: center;
+  }
+
+  .contact-grid > div:first-child,
+  .location-grid > div:first-child {
+    padding-top: 6px;
+  }
+}
