@@ -4168,7 +4168,8 @@ body {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
-    width: min(100%, 320px);
+    width: 100%;
+    max-width: 480px;
     margin: 0 auto;
     border: 0;
   }
@@ -4177,12 +4178,19 @@ body {
   .gallery-filters button:last-child,
   .gallery-filters button:nth-child(2n) {
     width: 100%;
+    min-height: 42px;
     border: 1px solid rgba(22, 34, 53, 0.16);
     border-radius: 8px;
   }
 
   .gallery-filters button:nth-last-child(-n + 2) {
     border-bottom: 1px solid rgba(22, 34, 53, 0.16);
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery-filters {
+    max-width: none;
   }
 }
 
