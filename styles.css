@@ -4185,3 +4185,45 @@ body {
     border-bottom: 1px solid rgba(22, 34, 53, 0.16);
   }
 }
+
+/* Keep the overview photo section compact on mobile. */
+.care-hero {
+  min-height: min(660px, 78svh);
+}
+
+@media (max-width: 760px) {
+  .care-hero {
+    min-height: 62svh;
+  }
+
+  .care-hero > img {
+    object-position: 50% 38%;
+  }
+
+  .care-copy {
+    width: min(100% - 42px, 420px);
+    padding: 0 0 max(58px, calc(env(safe-area-inset-bottom) + 48px));
+  }
+
+  .care-copy h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.16;
+  }
+
+  .care-copy > p:last-child {
+    max-width: 340px;
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.62;
+  }
+}
+
+@media (max-width: 420px) {
+  .care-hero {
+    min-height: 58svh;
+  }
+
+  .care-copy {
+    padding-bottom: max(46px, calc(env(safe-area-inset-bottom) + 38px));
+  }
+}
