@@ -4328,3 +4328,68 @@ body {
     line-height: 1.35;
   }
 }
+
+/* Desktop layout polish after flattening the design language. */
+.facility-info-card {
+  align-items: start;
+}
+
+.facility-info-card h3,
+.facility-info-card p {
+  grid-column: 1;
+}
+
+.facility-info-card h3 {
+  margin-bottom: 10px;
+}
+
+.facility-info-card p {
+  max-width: 260px;
+}
+
+.facility-info-card dl {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: start;
+}
+
+.facility-info-card dl div {
+  padding-top: 2px;
+}
+
+.facility-info-card dt {
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.facility-info-card dd {
+  max-width: 360px;
+  color: #2d333c;
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+@media (min-width: 981px) {
+  .facility-info-card {
+    grid-template-columns: minmax(260px, 0.34fr) minmax(0, 1fr);
+  }
+
+  .contact-grid,
+  .location-grid {
+    align-items: start;
+  }
+}
+
+@media (max-width: 980px) {
+  .facility-info-card h3,
+  .facility-info-card p,
+  .facility-info-card dl {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .facility-info-card p {
+    max-width: none;
+  }
+}
