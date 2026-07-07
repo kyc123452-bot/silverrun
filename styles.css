@@ -4489,3 +4489,66 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Keep hero messaging centered across desktop, tablet, and mobile. */
+.video-hero .hero-content {
+  place-content: center;
+  justify-items: center;
+  width: min(980px, calc(100% - 48px));
+  text-align: center;
+}
+
+.video-hero .hero-kicker {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 14px;
+  padding-left: 14px;
+}
+
+.video-hero .hero-subtitle {
+  max-width: 780px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.video-hero .hero-points,
+.video-hero .hero-actions {
+  justify-content: center;
+}
+
+.video-hero .hero-scroll-cue {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+.care-copy {
+  place-content: center;
+  justify-items: center;
+  width: min(880px, calc(100% - 48px));
+  max-width: none;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+}
+
+.care-copy h2,
+.care-copy > p:last-child {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.care-copy h2 {
+  max-width: 720px;
+}
+
+.care-copy > p:last-child {
+  max-width: 620px;
+}
+
+@media (max-width: 760px) {
+  .video-hero .hero-content,
+  .care-copy {
+    width: min(100% - 36px, 620px);
+  }
+}
