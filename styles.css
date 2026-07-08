@@ -4552,3 +4552,34 @@ body {
     width: min(100% - 36px, 620px);
   }
 }
+
+/* Final overview height pass: keep the rehabilitation intro concise on every viewport. */
+.care-hero {
+  min-height: clamp(420px, 54svh, 560px);
+}
+
+.care-copy {
+  padding-top: clamp(48px, 7svh, 72px);
+  padding-bottom: clamp(42px, 7svh, 70px);
+}
+
+@media (max-width: 1180px) {
+  .care-hero {
+    min-height: clamp(360px, 42svh, 470px);
+  }
+
+  .care-copy h2 {
+    font-size: clamp(28px, 4.4vw, 44px);
+  }
+}
+
+@media (max-width: 760px) {
+  .care-hero {
+    min-height: clamp(340px, 42svh, 430px);
+  }
+
+  .care-copy {
+    padding-top: 34px;
+    padding-bottom: max(30px, calc(env(safe-area-inset-bottom) + 24px));
+  }
+}
