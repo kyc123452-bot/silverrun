@@ -46,9 +46,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260708-care-overview-short" />
+    <link rel="stylesheet" href="./styles.css?v=20260712-mobile-performance" />
     <script src="./site-data.js?v=20260627-seo-service-areas" defer></script>
-    <script src="./script.js?v=20260628-cognitive-service-image" defer></script>
+    <script src="./script.js?v=20260712-mobile-performance" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -212,8 +212,17 @@
       </aside>
 
       <section class="hero video-hero" aria-label="실버런 주야간보호센터 메인">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="./public/assets/hero-main-video.mp4" type="video/mp4" />
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="metadata"
+          poster="./public/assets/closeup-support-hands-2-2_1761578154699.jpg"
+          data-hero-video
+        >
+          <source src="./public/assets/메인_동영상(압축)_1760950223234.mp4" type="video/mp4" />
         </video>
         <div class="hero-shade"></div>
         <div class="hero-logo-wrap hero-content">

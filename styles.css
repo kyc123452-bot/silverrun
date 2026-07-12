@@ -4583,3 +4583,118 @@ body {
     padding-bottom: max(30px, calc(env(safe-area-inset-bottom) + 24px));
   }
 }
+
+/* Mobile performance and readability pass. */
+.video-hero {
+  background:
+    linear-gradient(90deg, rgba(8, 18, 32, 0.68), rgba(8, 18, 32, 0.34)),
+    url("./public/assets/closeup-support-hands-2-2_1761578154699.jpg") center / cover no-repeat;
+}
+
+.video-hero.hero-video-fallback video {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .scroll-progress {
+    display: none;
+  }
+
+  .services {
+    padding-top: 54px;
+    padding-bottom: 62px;
+  }
+
+  .services .section-inner {
+    width: min(100% - 32px, 520px);
+  }
+
+  .services h2 {
+    max-width: 330px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: clamp(26px, 7.2vw, 34px);
+    line-height: 1.26;
+    letter-spacing: 0;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+    border: 0;
+    background: transparent;
+  }
+
+  .service-card {
+    display: block;
+    overflow: hidden;
+    border: 1px solid rgba(19, 32, 50, 0.12);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(16, 31, 48, 0.08);
+  }
+
+  .service-card img {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transform: none;
+  }
+
+  .service-card div {
+    min-height: 0;
+    padding: 18px 18px 20px;
+    background: #fff;
+    text-align: left;
+  }
+
+  .service-card h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
+  .service-card p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .service-card:hover,
+  .service-card:hover img {
+    transform: none;
+  }
+
+  .reveal-item,
+  .js .reveal-item:not(.is-visible),
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .video-hero video,
+  .service-card,
+  .service-card img,
+  .gallery-block,
+  .gallery-block img {
+    transition: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .services .section-inner {
+    width: min(100% - 28px, 420px);
+  }
+
+  .service-card img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-card div {
+    padding: 17px 16px 19px;
+  }
+}

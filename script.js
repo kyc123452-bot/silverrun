@@ -238,30 +238,58 @@ function bindTabs() {
   activateTab(tabs.find((tab) => tab.classList.contains("active")) || tabs[0]);
 }
 
-function bindScrollExperience() {
-  const progress = document.createElement("div");
-  progress.className = "scroll-progress";
-  progress.setAttribute("aria-hidden", "true");
-  document.body.prepend(progress);
+function bindHeroVideo() {
+  const video = document.querySelector("[data-hero-video]");
+  if (!video) return;
 
-  let scrollTicking = false;
-  const updateScroll = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
-    progress.style.transform = `scaleX(${ratio})`;
-    scrollTicking = false;
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+
+  const hero = video.closest(".video-hero");
+  const tryPlay = () => {
+    const playAttempt = video.play();
+    if (!playAttempt || typeof playAttempt.catch !== "function") return;
+    playAttempt.catch(() => {
+      hero?.classList.add("hero-video-fallback");
+    });
   };
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      requestAnimationFrame(updateScroll);
-    },
-    { passive: true },
-  );
-  updateScroll();
+  tryPlay();
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && video.paused) tryPlay();
+  });
+}
+
+function bindScrollExperience() {
+  const isCompactViewport = window.matchMedia("(max-width: 760px)").matches;
+
+  if (!isCompactViewport) {
+    const progress = document.createElement("div");
+    progress.className = "scroll-progress";
+    progress.setAttribute("aria-hidden", "true");
+    document.body.prepend(progress);
+
+    let scrollTicking = false;
+    const updateScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      progress.style.transform = `scaleX(${ratio})`;
+      scrollTicking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(updateScroll);
+      },
+      { passive: true },
+    );
+    updateScroll();
+  }
 
   const revealGroups = [
     ".care-copy > *",
@@ -281,7 +309,7 @@ function bindScrollExperience() {
     item.style.setProperty("--reveal-delay", `${(index % 5) * 55}ms`);
   });
 
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+  if (prefersReducedMotion || isCompactViewport || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   } else {
     const resetBuffer = 96;
@@ -456,6 +484,7 @@ bindGallery({
 });
 bindHeader();
 bindTabs();
+bindHeroVideo();
 bindContactForm();
 bindCareTools();
 bindScrollExperience();
