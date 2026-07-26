@@ -8,6 +8,65 @@
   font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
 }
 
+/* Official local profiles: keep the business entity easy to verify for visitors and crawlers. */
+.location-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 30px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.location-actions a {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 18px 16px;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.location-actions a + a {
+  border-left: 1px solid var(--line);
+}
+
+.location-actions strong {
+  font-size: calc(15px * var(--font-scale, 1));
+}
+
+.location-actions span {
+  color: #687386;
+  font-size: calc(12px * var(--font-scale, 1));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .location-actions a:hover {
+    color: var(--sky-deep);
+    background: #f5f9fc;
+  }
+}
+
+@media (max-width: 620px) {
+  .location-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .location-actions a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 16px 2px;
+  }
+
+  .location-actions a + a {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .location-actions span {
+    text-align: right;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

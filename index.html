@@ -51,7 +51,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260726-geo-static" />
+    <link rel="stylesheet" href="./styles.css?v=20260726-local-entity" />
     <script src="./site-data.js?v=20260726-geo-static" defer></script>
     <script src="./script.js?v=20260726-geo-static" defer></script>
     <script type="application/ld+json">
@@ -62,7 +62,11 @@
             "@type": "LocalBusiness",
             "@id": "https://www.silverrun.kr/#business",
             "name": "실버런 주야간보호센터",
-            "alternateName": "SILVER RUN DAYLIGHT CARE CENTER",
+            "alternateName": [
+              "실버런주간보호센터",
+              "실버런 주간보호센터",
+              "SILVER RUN DAYLIGHT CARE CENTER"
+            ],
             "legalName": "실버런 주야간보호센터",
             "description": "경기도 남양주시 평내호평역 인근에서 노인 주·야간보호, 스마트 운동재활, 간호·인지·생활 지원과 송영 상담을 제공하는 장기요양기관입니다.",
             "slogan": "어르신이 편안하게 머무는 실버런",
@@ -88,7 +92,15 @@
               "latitude": 37.6461136,
               "longitude": 127.2354104
             },
-            "hasMap": "https://www.google.com/maps?q=37.6461136,127.2354104",
+            "hasMap": [
+              "https://map.naver.com/p/entry/place/2030392337",
+              "https://www.google.com/maps?q=37.6461136,127.2354104"
+            ],
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "Naver Place ID",
+              "value": "2030392337"
+            },
             "areaServed": [
               {
                 "@type": "City",
@@ -230,7 +242,10 @@
                 "closes": "15:00"
               }
             ],
-            "sameAs": ["https://blog.naver.com/silverrun365"]
+            "sameAs": [
+              "https://map.naver.com/p/entry/place/2030392337",
+              "https://blog.naver.com/silverrun365"
+            ]
           },
           {
             "@type": "Service",
@@ -895,23 +910,36 @@
               <div><dt>전화</dt><dd><a href="tel:010-3141-9988">010-3141-9988</a></dd></div>
               <div><dt>상담 이메일</dt><dd><a href="mailto:silverrun01@naver.com">silverrun01@naver.com</a></dd></div>
               <div><dt>운영시간</dt><dd>평일 08:00-18:00<br />토요일 09:00-15:00<br />일요일 및 공휴일 휴무</dd></div>
-              <div class="blog-row">
-                <dt>블로그</dt>
-                <dd>
-                  <a
-                    class="blog-button"
-                    href="https://blog.naver.com/silverrun365"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="실버런 네이버 블로그 새 창에서 보기"
-                  >
-                    <span class="blog-button-mark" aria-hidden="true">N</span>
-                    <span>실버런 네이버 블로그</span>
-                    <span class="blog-button-arrow" aria-hidden="true">↗</span>
-                  </a>
-                </dd>
-              </div>
             </dl>
+            <nav class="location-actions" aria-label="실버런 지도와 공식 채널">
+              <a
+                href="https://map.naver.com/p/entry/place/2030392337"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="네이버 지도에서 실버런주간보호센터 보기"
+              >
+                <strong>네이버 지도</strong>
+                <span>업체 정보 보기</span>
+              </a>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&amp;destination=37.6461136%2C127.2354104"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="구글 지도에서 실버런 주야간보호센터 길찾기"
+              >
+                <strong>구글 지도</strong>
+                <span>길찾기</span>
+              </a>
+              <a
+                href="https://blog.naver.com/silverrun365"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="실버런 네이버 블로그 새 창에서 보기"
+              >
+                <strong>네이버 블로그</strong>
+                <span>센터 소식 보기</span>
+              </a>
+            </nav>
             <div class="service-area">
               <h3>주요 송영 상담 지역</h3>
               <p>평내동 · 호평동 · 금곡동 · 화도읍(마석) · 다산동 · 양정동 · 와부읍(덕소)</p>
@@ -962,6 +990,8 @@
         <a href="./daycare-cost-2026.html">2026 이용비용</a>
         <a href="./daycare-shuttle-namyangju.html">송영 안내</a>
         <a href="./daycare-programs.html">프로그램 안내</a>
+        <a href="https://map.naver.com/p/entry/place/2030392337" target="_blank" rel="noopener noreferrer">네이버 지도</a>
+        <a href="https://blog.naver.com/silverrun365" target="_blank" rel="noopener noreferrer">네이버 블로그</a>
         <a href="#location">1:1 문의</a>
       </div>
       <p>
