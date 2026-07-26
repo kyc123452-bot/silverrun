@@ -51,9 +51,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260726-info-hub" />
-    <script src="./site-data.js?v=20260726-info-hub" defer></script>
-    <script src="./script.js?v=20260726-info-hub" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260726-geo-static" />
+    <script src="./site-data.js?v=20260726-geo-static" defer></script>
+    <script src="./script.js?v=20260726-geo-static" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -516,7 +516,63 @@
       <section class="services" id="services">
         <div class="section-inner">
           <h2>어르신의 건강한 일상을 위한 맞춤형 서비스</h2>
-          <div class="service-grid" data-services></div>
+          <div class="service-grid" data-services>
+            <article class="service-card">
+              <img
+                src="./public/assets/gallery-activity-CB4uWo5p.webp"
+                alt="실버런 워킹레일과 슬링 운동재활 장비"
+                loading="lazy"
+              />
+              <div>
+                <h3>스마트 운동재활 서비스</h3>
+                <p>슬링, 워킹레일, 순환운동을 활용한 안전한 신체 기능 회복 프로그램</p>
+              </div>
+            </article>
+            <article class="service-card">
+              <img
+                src="./public/assets/service-medical-nursing-20260628.jpg"
+                alt="간호사가 어르신의 혈압을 확인하는 모습"
+                loading="lazy"
+              />
+              <div>
+                <h3>의료·간호 서비스</h3>
+                <p>혈압, 혈당, 투약 관리 등 어르신 건강 상태에 맞춘 세심한 관리</p>
+              </div>
+            </article>
+            <article class="service-card">
+              <img
+                src="./public/assets/service-cognitive-emotional-20260628.jpg"
+                alt="어르신이 인지 활동 프로그램에 참여하는 모습"
+                loading="lazy"
+              />
+              <div>
+                <h3>인지·정서 지원 서비스</h3>
+                <p>치매 예방 활동과 정서적 안정을 돕는 다양한 프로그램</p>
+              </div>
+            </article>
+            <article class="service-card">
+              <img
+                src="./public/assets/service-daily-support-20260628.jpg"
+                alt="어르신의 외부 생활 활동을 지원하는 모습"
+                loading="lazy"
+              />
+              <div>
+                <h3>생활 지원 서비스</h3>
+                <p>일상 속 편안함을 위한 맞춤형 지원</p>
+              </div>
+            </article>
+            <article class="service-card">
+              <img
+                src="./public/assets/gallery-meal-KxPB_zQ5.webp"
+                alt="실버런의 위생적인 조리실"
+                loading="lazy"
+              />
+              <div>
+                <h3>영양 관리 서비스</h3>
+                <p>어르신의 상태를 고려한 균형 잡힌 식사와 위생적인 조리 환경</p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -723,13 +779,52 @@
           </div>
         </div>
         <div class="section-inner">
-          <div class="facility-info-grid" data-facility-info></div>
+          <div class="facility-info-grid" data-facility-info>
+            <article class="facility-info-card">
+              <h3>실버런 주야간보호센터</h3>
+              <p>국가인증 스마트 운동재활 전문 시설</p>
+              <dl>
+                <div>
+                  <dt>주소</dt>
+                  <dd>경기도 남양주시 경춘로1256번길 9, 강남프라자 10층 1003호</dd>
+                </div>
+                <div>
+                  <dt>전화</dt>
+                  <dd><a href="tel:010-3141-9988">010-3141-9988</a></dd>
+                </div>
+                <div>
+                  <dt>위치</dt>
+                  <dd>평내호평역 인근, 평내 상업지구 내 위치</dd>
+                </div>
+                <div>
+                  <dt>주차</dt>
+                  <dd>건물 내 주차장 완비</dd>
+                </div>
+              </dl>
+            </article>
+          </div>
           <div class="gallery-block">
             <div class="gallery-heading">
               <h3>시설 안내</h3>
-              <div class="gallery-filters" data-gallery-filters></div>
+              <div class="gallery-filters" data-gallery-filters>
+                <button class="active" type="button" data-category="메인홀" aria-pressed="true">메인홀</button>
+                <button type="button" data-category="운동재활 공간" aria-pressed="false">운동재활 공간</button>
+                <button type="button" data-category="인지활동 공간" aria-pressed="false">인지활동 공간</button>
+                <button type="button" data-category="상담 공간" aria-pressed="false">상담 공간</button>
+                <button type="button" data-category="휴게 공간" aria-pressed="false">휴게 공간</button>
+                <button type="button" data-category="조리실" aria-pressed="false">조리실</button>
+              </div>
             </div>
-            <div class="facility-gallery" data-facility-gallery></div>
+            <div class="facility-gallery" data-facility-gallery aria-live="polite" aria-label="메인홀 사진">
+              <figure class="gallery-item">
+                <img
+                  src="./public/assets/gallery-hall-SmPQHK7I.webp"
+                  alt="실버런 주야간보호센터 메인홀 시설 이미지"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </div>
           </div>
         </div>
       </section>

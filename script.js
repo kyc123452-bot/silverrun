@@ -23,9 +23,9 @@ const services = [
     description: "일상 속 편안함을 위한 맞춤형 지원",
   },
   {
-    image: "ChatGPT-Image-2025년-10월-16일-오후-06_04_13_1760605499394.png",
+    image: "gallery-meal-KxPB_zQ5.webp",
     title: "영양 관리 서비스",
-    description: "전문 영양사가 관리하는 균형 잡힌 식단 제공",
+    description: "어르신의 상태를 고려한 균형 잡힌 식사와 위생적인 조리 환경",
   },
 ];
 
@@ -34,7 +34,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 function renderServices() {
   const mount = document.querySelector("[data-services]");
-  if (!mount) return;
+  if (!mount || mount.children.length) return;
 
   mount.innerHTML = services
     .map(
@@ -53,7 +53,7 @@ function renderServices() {
 
 function renderFacilityInfo() {
   const mount = document.querySelector("[data-facility-info]");
-  if (!mount) return;
+  if (!mount || mount.children.length) return;
 
   mount.innerHTML = (pageData.facilityInfo || [])
     .map(
@@ -157,9 +157,16 @@ function bindGallery({ filterSelector, gallerySelector, items }) {
   const gallery = document.querySelector(gallerySelector);
   if (!filters || !gallery || !items?.length) return;
 
-  let activeCategory = items[0].title || "기타";
-  renderFilterButtons(filters, items, activeCategory);
-  renderGallery(gallery, items, activeCategory);
+  let activeCategory =
+    filters.querySelector("button.active[data-category]")?.dataset.category ||
+    items[0].title ||
+    "기타";
+  if (!filters.querySelector("button[data-category]")) {
+    renderFilterButtons(filters, items, activeCategory);
+  }
+  if (!gallery.children.length) {
+    renderGallery(gallery, items, activeCategory);
+  }
   filters.querySelectorAll("button[data-category]").forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.category === activeCategory));
   });
