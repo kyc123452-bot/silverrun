@@ -34,6 +34,8 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 function renderServices() {
   const mount = document.querySelector("[data-services]");
+  if (!mount) return;
+
   mount.innerHTML = services
     .map(
       (item) => `
@@ -296,7 +298,9 @@ function bindScrollExperience() {
     ".trust-strip article",
     ".greeting-detail .eyebrow, .greeting-detail h2, .greeting-detail .text-card",
     ".services .section-inner > h2, .service-card",
+    ".local-search-answer > *, .local-checklist",
     ".admission-content > .badge, .admission-content > h2, .tabs, .tab-panel",
+    ".guide-section > *, .guide-faq details",
     ".facility-info-card, .gallery-block",
     ".contact-grid > *",
     ".location-grid > *",
