@@ -16,33 +16,62 @@
   width: min(100%, 560px);
 }
 
-.video-hero .hero-call-action {
-  display: grid;
-  gap: 7px;
-  min-width: 0;
-}
-
-.video-hero .hero-call-action .filled-button,
-.video-hero .hero-actions > .outline-button {
+.video-hero .hero-actions > a {
   width: 100%;
   min-width: 0;
   white-space: nowrap;
 }
 
-.video-hero .hero-call-number {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: calc(13px * var(--font-scale, 1));
-  font-weight: 700;
-  line-height: 1.35;
-  text-align: center;
-  text-decoration: none;
-  text-underline-offset: 3px;
+.video-hero .hero-actions .hero-call-button,
+.video-hero .hero-actions .hero-blog-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
 }
 
-.video-hero .hero-call-number:hover,
-.video-hero .hero-call-number:focus-visible {
+.video-hero .hero-actions .hero-call-button {
+  flex-direction: column;
+  gap: 3px;
+}
+
+.video-hero .hero-call-number {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: calc(12px * var(--font-scale, 1));
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.video-hero .hero-call-button:hover .hero-call-number,
+.video-hero .hero-call-button:focus-visible .hero-call-number {
   color: #fff;
-  text-decoration: underline;
+}
+
+.video-hero .hero-actions .hero-blog-button {
+  gap: 9px;
+  color: #fff;
+  background: #03c75a;
+  border-color: #03c75a;
+}
+
+.video-hero .hero-actions .hero-blog-button:hover,
+.video-hero .hero-actions .hero-blog-button:focus-visible {
+  color: #fff;
+  background: #02b653;
+  border-color: #02b653;
+}
+
+.video-hero .naver-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: #03c75a;
+  background: #fff;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 @media (max-width: 760px) {
@@ -51,12 +80,8 @@
     width: min(100%, 390px);
   }
 
-  .video-hero .hero-call-action {
-    grid-column: 1 / -1;
-  }
-
   .video-hero .hero-call-number {
-    font-size: calc(12px * var(--font-scale, 1));
+    font-size: calc(11px * var(--font-scale, 1));
   }
 }
 
