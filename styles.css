@@ -8,6 +8,58 @@
   font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
 }
 
+/* First-view actions: primary consultation and the official blog. */
+.video-hero .hero-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  width: min(100%, 560px);
+}
+
+.video-hero .hero-call-action {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.video-hero .hero-call-action .filled-button,
+.video-hero .hero-actions > .outline-button {
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.video-hero .hero-call-number {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: calc(13px * var(--font-scale, 1));
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.video-hero .hero-call-number:hover,
+.video-hero .hero-call-number:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+  .video-hero .hero-actions {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 390px);
+  }
+
+  .video-hero .hero-call-action {
+    grid-column: 1 / -1;
+  }
+
+  .video-hero .hero-call-number {
+    font-size: calc(12px * var(--font-scale, 1));
+  }
+}
+
 /* Official local profiles: keep the business entity easy to verify for visitors and crawlers. */
 .location-actions {
   display: grid;
