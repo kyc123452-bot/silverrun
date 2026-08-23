@@ -62,16 +62,10 @@
 }
 
 .video-hero .naver-logo {
-  display: inline-grid;
-  place-items: center;
   width: 24px;
   height: 24px;
-  color: #03c75a;
-  background: #fff;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1;
+  flex: 0 0 24px;
+  fill: currentColor;
 }
 
 @media (max-width: 760px) {
@@ -82,6 +76,12 @@
 
   .video-hero .hero-call-number {
     font-size: calc(11px * var(--font-scale, 1));
+  }
+
+  .video-hero .hero-mobile-title-image {
+    clip-path: inset(14.8% 23.7% 17.1% 16.7%);
+    transform: translateX(5%) scale(1.48);
+    transform-origin: center;
   }
 }
 
