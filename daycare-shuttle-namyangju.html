@@ -23,7 +23,10 @@
     <meta property="og:url" content="https://www.silverrun.kr/daycare-shuttle-namyangju.html" />
     <meta property="og:image" content="https://www.silverrun.kr/public/assets/gallery-hall-SmPQHK7I.webp" />
     <link rel="icon" type="image/png" href="./public/assets/silverrun-favicon.png" />
-    <link rel="stylesheet" href="./styles.css?v=20260726-local-content" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./home.css?v=20260925" />
+    <link rel="stylesheet" href="./guide.css?v=20260925" />
+    <script src="./home.js?v=20260925" defer></script>
     <script src="./script.js?v=20260726-local-content" defer></script>
     <script type="application/ld+json">
       {
@@ -83,16 +86,19 @@
         ]
       }
     </script>
+    <link rel="stylesheet" href="./quick-access.css?v=20260925" />
   </head>
-  <body class="guide-page info-page">
+  <body class="interior-page guide-page">
+    <a class="skip-link" href="#top">본문 바로가기</a>
     <header class="site-header" data-header>
-      <a class="brand" href="./" aria-label="실버런 주야간보호센터 홈"><img class="logo-light" src="./public/assets/silver-run-logo-cropped.svg" alt="" aria-hidden="true" /><img class="logo-dark" src="./public/assets/silver-run-logo-cropped-dark.svg" alt="" aria-hidden="true" /></a>
-      <nav class="desktop-nav" aria-label="주요 메뉴"><a href="./#greeting">인사말</a><a href="./#admission">입소 안내</a><a href="./#facility">시설 안내</a><a href="./#contact">상담 및 문의</a></nav>
-      <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-button><span></span><span></span></button>
+      <a class="brand" href="./index.html" aria-label="실버런 주야간보호센터 홈"><img src="./public/assets/silver-run-logo-cropped-dark.svg" alt="실버런 주야간보호센터" width="260" height="46" /></a>
+      <nav class="desktop-nav" aria-label="주요 메뉴"><a href="./about.html">센터 소개</a><a href="./services.html">돌봄 서비스</a><a href="./admission.html">입소 안내</a><a href="./center-guide.html">센터 선택</a><a href="./facility.html">시설 안내</a><a href="./location.html">오시는 길</a></nav>
+      <div class="header-actions"><a class="social-link naver-link" href="https://blog.naver.com/silverrun365" target="_blank" rel="noopener noreferrer" aria-label="실버런 네이버 블로그"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.273 12.845 7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845Z" /></svg></a><a class="social-link map-link" href="./location.html" aria-label="오시는 길"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg></a><a class="header-contact" href="./contact.html">상담 문의 <span aria-hidden="true">↗</span></a></div>
+      <button class="menu-button" type="button" data-menu-button aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-navigation"><span></span><span></span></button>
+      <nav class="mobile-menu" id="mobile-navigation" data-mobile-menu aria-label="모바일 메뉴"><a href="./about.html">센터 소개</a><a href="./services.html">돌봄 서비스</a><a href="./admission.html">입소 안내</a><a href="./center-guide.html">센터 선택</a><a href="./facility.html">시설 안내</a><a href="./location.html">오시는 길</a><a href="./contact.html">상담 문의</a></nav>
     </header>
-    <div class="mobile-menu" data-mobile-menu><a href="./#greeting">인사말</a><a href="./#admission">입소 안내</a><a href="./#facility">시설 안내</a><a href="./#contact">상담 및 문의</a></div>
 
-    <main>
+    <main id="top" class="interior-main"><div class="guide-navigation section-inner"><nav class="breadcrumbs" aria-label="현재 위치"><a href="./index.html">홈</a><span aria-hidden="true">/</span><span aria-current="page">송영 안내</span></nav><nav class="guide-tabs" aria-label="이용 정보"><a href="./namyangju-daycare.html">센터 선택 가이드</a><a href="./daycare-cost-2026.html">2026 이용비용</a><a href="./daycare-shuttle-namyangju.html" aria-current="page">송영 안내</a><a href="./daycare-programs.html">프로그램 안내</a></nav></div>
       <section class="guide-hero info-hero shuttle-hero">
         <img src="./public/assets/gallery-hall-SmPQHK7I.webp" alt="실버런 주야간보호센터 메인홀의 안전한 이동 동선" />
         <div class="guide-hero-shade"></div>
@@ -159,7 +165,7 @@
             <summary>송영 가능 여부는 어떻게 확인하나요?</summary>
             <p>거주지와 희망 이용 요일 및 시간을 알려주시면 센터의 기존 차량 운행 동선과 함께 확인한 뒤 안내합니다.</p>
           </details>
-          <div class="guide-actions"><a class="filled-button" href="tel:010-3141-9988">송영 가능 여부 전화 상담</a><a class="outline-button dark" href="./#location">센터 위치 보기</a></div>
+          <div class="guide-actions"><a class="filled-button" href="tel:010-3141-9988">송영 가능 여부 전화 상담</a><a class="outline-button dark" href="./location.html">센터 위치 보기</a></div>
         </section>
       </article>
 
@@ -172,10 +178,11 @@
         </div>
       </section>
     </main>
-    <footer class="site-footer">
-      <img class="footer-logo" src="./public/assets/silver-run-logo-cropped.svg" alt="실버런 주야간보호센터" />
-      <div class="footer-links"><a href="./">홈</a><a href="./#admission">입소 안내</a><a href="./#location">오시는 길</a></div>
-      <p>상호 : 실버런 주야간보호센터 · 전화 : 010-3141-9988</p><p>주소 : 경기도 남양주시 경춘로1256번길 9, 강남프라자 10층 1003호</p>
-    </footer>
+    <footer class="site-footer"><div class="section-inner"><div class="footer-top"><a href="#top"><img class="footer-logo" src="./public/assets/silver-run-logo-cropped.svg" alt="실버런 주야간보호센터" width="260" height="46" /></a><div class="footer-contact"><strong>상담 안내</strong><a href="tel:010-3141-9988">010-3141-9988</a><a href="mailto:silverrun01@naver.com">silverrun01@naver.com</a></div><div class="footer-hours"><strong>운영시간</strong><p>월요일–토요일 07:00–19:00</p><p>일요일 및 공휴일 휴무</p></div></div><div class="footer-bottom"><nav class="footer-links" aria-label="하단 메뉴"><span>이용약관</span><span>개인정보처리방침</span><a href="./namyangju-daycare.html">남양주 센터 선택 가이드</a><a href="./daycare-cost-2026.html">2026 이용비용</a><a href="./daycare-shuttle-namyangju.html">송영 안내</a><a href="./daycare-programs.html">프로그램 안내</a><a href="./contact.html">1:1 문의</a></nav><p>상호 : 실버런 주야간보호센터 · 전화 : 010-3141-9988</p><p>주소 : 경기도 남양주시 경춘로 1256번길 9, 강남프라자 10층 1003호</p><small>© SILVER RUN DAYLIGHT CARE CENTER. ALL RIGHTS RESERVED</small><a class="back-top" href="#top" aria-label="맨 위로">↑<span>TOP</span></a></div></div></footer>
+  <aside class="quick-access" aria-label="빠른 상담 및 글자 크기">
+  <a class="quick-contact" title="전화 상담 · 010-3141-9988" href="tel:010-3141-9988" aria-label="010-3141-9988 전화 상담"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.8 16.6a1 1 0 0 0 1.2-.3l.4-.5A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.5.4a1 1 0 0 0-.3 1.2 14 14 0 0 0 6.4 6.4Z"/></svg><span>전화</span><strong>010-3141-9988</strong></a>
+  <a class="quick-blog" title="실버런 네이버 블로그" href="https://blog.naver.com/silverrun365" target="_blank" rel="noopener noreferrer" aria-label="실버런 네이버 블로그 새 창에서 보기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.273 12.845 7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845Z"/></svg><span>블로그</span><small>실버런 소식 보기 ↗</small></a>
+  <div class="quick-font"><p>글자 크기</p><div><button type="button" data-font-control="smaller" aria-label="글자 작게">가<span aria-hidden="true">−</span></button><button type="button" data-font-control="larger" aria-label="글자 크게">가<span aria-hidden="true">+</span></button></div></div>
+</aside>
   </body>
 </html>

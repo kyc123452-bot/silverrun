@@ -16,7 +16,7 @@ window.SU_DAILY_DATA = {
     { title: "인지활동 공간", image: "hero-2-DymhRlAK.webp" },
     { title: "상담 공간", image: "gallery-rehab-room-CXO-76wx.webp" },
     { title: "휴게 공간", image: "gallery-rest-therapy-20260611.jpeg" },
-    { title: "조리실", image: "gallery-meal-KxPB_zQ5.webp" },
+    { title: "조리실", image: "blog-kitchen-20260925.jpg" },
   ],
   facilityIntro: [],
 };

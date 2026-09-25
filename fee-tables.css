@@ -1,0 +1,17 @@
+/* Readable prices: full table on wide screens, labelled rows on small screens. */
+.fee-table, .info-fee-table { font-size: calc(17px * var(--font-scale)); }
+.fee-table :is(th,td), .info-fee-table :is(th,td) { padding: 18px 14px; font-size: inherit; line-height: 1.65; }
+.fee-table th, .info-fee-table th { font-weight: 600; }
+.fee-table td:nth-child(n+3), .info-fee-table td:nth-child(n+3) { font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (max-width:600px) {
+ .fee-table, .info-fee-table { display: block; width: 100%; min-width: 0; }
+ .fee-table colgroup, .info-fee-table colgroup { display: none; }
+ .fee-table thead, .info-fee-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+ .fee-table tbody, .info-fee-table tbody { display: grid; gap: 16px; }
+ .fee-table tr, .info-fee-table tr { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: white; }
+ .fee-table td, .info-fee-table td { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 10px; align-items: center; padding: 13px 16px; border: 0; border-top: 1px solid var(--line); text-align: right; font-size: calc(16px * var(--font-scale)); }
+ .fee-table td::before, .info-fee-table td::before { content: attr(data-label); font-size: 13px; color: var(--muted); text-align: left; font-weight: 400; }
+ .fee-table td:nth-child(2), .info-fee-table td:nth-child(2) { order: -1; border-top: 0; background: var(--soft-blue); color: var(--sky-deep); font-weight: 600; font-size: calc(18px * var(--font-scale)); }
+ .fee-table td:nth-child(2)::before, .info-fee-table td:nth-child(2)::before { color: var(--sky-deep); }
+ .info-table-frame { border: 0; border-radius: 0; overflow: visible; }
+}

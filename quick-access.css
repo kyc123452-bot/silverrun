@@ -1,0 +1,65 @@
+/* Compact floating controls overlay the page without reserving layout space. */
+.quick-access {
+  position: fixed;
+  z-index: 15;
+  right: 20px;
+  bottom: 28px;
+  width: 54px;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1;
+  text-align: center;
+}
+.quick-access > a {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 3px 12px #19344a1a;
+  transition: background-color .2s, transform .2s;
+}
+.quick-access .quick-contact { background: #176fba; }
+.quick-access .quick-contact:hover { background: #0e5c9e; }
+.quick-access .quick-blog { background: #078738; }
+.quick-access .quick-blog:hover { background: #05692b; }
+.quick-access svg { display: block; width: 19px; height: 19px; flex-shrink: 0; }
+.quick-contact svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.quick-blog svg { fill: currentColor; width: 16px; height: 16px; }
+.quick-access > a > span { font-size: 9px; font-weight: 600; letter-spacing: -.04em; white-space: nowrap; }
+.quick-contact strong, .quick-blog small, .quick-font p { display: none; }
+.quick-font { display: contents; }
+.quick-font > div { display: grid; gap: 7px; justify-items: center; }
+.quick-font button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #d3dfe8;
+  border-radius: 50%;
+  background: #fff;
+  color: #176fba;
+  font: 500 18px/1 "Noto Sans KR", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #19344a0d;
+}
+.quick-font button span { font-size: 17px; font-weight: 400; }
+.quick-font button:hover, .quick-font button.active { background: #edf5fb; border-color: #85b3d8; }
+.quick-access a:focus-visible, .quick-access button:focus-visible { outline: 3px solid #e7b620; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .quick-access { right: 12px; bottom: 16px; width: 48px; gap: 7px; }
+  .quick-access > a { width: 48px; height: 48px; gap: 4px; }
+  .quick-access > a > span { font-size: 8px; }
+  .quick-font > div { gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) { .quick-access > a { transition: none; } }
