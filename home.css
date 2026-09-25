@@ -57,8 +57,8 @@ button, summary { cursor: pointer; }
 .hero-copy { position: absolute; left: 6%; right: 5%; top: 43%; transform: translateY(-28%); }
 .hero-kicker { font-size: calc(17px * var(--font-scale)); margin-bottom: 8px; letter-spacing: -.03em; }
 .hero-copy h1 { font-size: calc(36px * var(--font-scale)); font-weight: 500; line-height: 1.45; letter-spacing: -.055em; }
-
-
+.hero-points { font-size: calc(12px * var(--font-scale)); margin-top: 18px; color: #f5f7f7; }
+.hero-points span { margin-inline: 8px; color: var(--sun); }
 .hero-actions { display: flex; gap: 22px; margin-top: 27px; }
 .hero-actions a { border-bottom: 1px solid #ffffff75; font-size: calc(12px * var(--font-scale)); padding-bottom: 7px; }
 .hero-actions a > span { margin-left: 9px; }
@@ -262,8 +262,8 @@ dt { font-weight: 600; font-size: 13px; } dd { margin: 0; font-size: 13px; }
   .hero-kicker { font-size: calc(11px * var(--font-scale)); margin-bottom: 12px; }
   .hero-copy h1 { font-size: calc(29px * var(--font-scale)); max-width: 330px; line-height: 1.5; }
   .hero-copy h1 strong { display: block; }
-
-   .hero-actions { gap: 18px; margin-top: 18px; }
+  .hero-points { font-size: calc(10px * var(--font-scale)); line-height: 1.8; margin-top: 15px; max-width: 320px; }
+  .hero-points span { margin-inline: 4px; } .hero-actions { gap: 18px; margin-top: 18px; }
   .hero-actions a { font-size: 10px; } .hero-actions a > span { margin-left: 5px; }
   .hero-scroll { right: 20px; bottom: 12px; font-size: 7px; gap: 7px; } .hero-scroll > span { width: 20px; height: 20px; font-size: 10px; }
   .services-intro { padding: 57px 0 46px; }
@@ -459,9 +459,9 @@ dt { font-weight: 600; font-size: 13px; } dd { margin: 0; font-size: 13px; }
 .hero-copy h1 { font-size: calc(52px * var(--font-scale)); line-height: 1.23; letter-spacing: -.045em; font-weight: 400; }
 .hero-title-line { display: block; }
 .hero-copy h1 strong { display: inline; font-weight: 700; }
-
-
-
+.hero-points { display: flex; flex-wrap: wrap; gap: 8px 0; margin-top: 24px; font-size: calc(13px * var(--font-scale)); }
+.hero-points span { color: #ffffffed; margin: 0; }
+.hero-points span + span::before { content: '·'; color: var(--sun); margin: 0 12px; }
 .hero-actions { flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .hero-actions a { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; border: 1px solid #ffffff85; border-radius: 22px; font-size: calc(11px * var(--font-scale)); font-weight: 500; background: #ffffff12; }
 .hero-actions a:first-child { background: var(--sun); border-color: var(--sun); color: #182e40; }
@@ -472,16 +472,16 @@ dt { font-weight: 600; font-size: 13px; } dd { margin: 0; font-size: 13px; }
  .hero-copy { left: 24px; right: 24px; top: 50%; bottom: auto; transform: translateY(-55%); }
  .hero-kicker { font-size: calc(11px * var(--font-scale)); margin-bottom: 20px; max-width: 270px; }
  .hero-copy h1 { font-size: calc(clamp(30px, 7.6vw, 46px) * var(--font-scale)); max-width: none; line-height: 1.28; }
-
-
+ .hero-points { font-size: calc(11px * var(--font-scale)); gap: 6px 0; max-width: 300px; margin-top: 20px; }
+ .hero-points span + span::before { margin: 0 8px; }
  .hero-actions { gap: 10px; margin-top: 23px; }
  .hero-actions a { font-size: 10px; padding: 7px 11px; }
 }
 @media (max-width:360px) {
  .hero-copy { left: 19px; right: 19px; }
  .hero-copy h1 { font-size: calc(28px * var(--font-scale)); }
-
-
+ .hero-points { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; }
+ .hero-points span + span::before { content: none; }
 }
 /* Recognizable map services with explicit destinations and actions. */
 .location-grid { grid-template-columns: 1.25fr .85fr; gap: 38px; align-items: start; }
@@ -518,8 +518,8 @@ dt { font-weight: 600; font-size: 13px; } dd { margin: 0; font-size: 13px; }
  .location-destination { padding: 28px 23px; }
 }
 @media (max-width:760px) {
-
-
+ .hero-points { display: grid; grid-template-columns: max-content max-content; gap: 6px 18px; }
+ .hero-points span + span::before { content: none; }
 }
 /* Give the main navigation room and readable labels at every desktop width. */
 .desktop-nav { font-size: calc(16px * var(--font-scale)); gap: 21px; }
@@ -589,44 +589,3 @@ dt { font-weight: 600; font-size: 13px; } dd { margin: 0; font-size: 13px; }
 .home-moments { margin-top: 0; margin-bottom: 64px; padding-top: 32px; }
 .home-moments > h2 { margin-bottom: 26px; font-size: calc(28px * var(--font-scale)); font-weight: 600; }
 @media (max-width:760px) { .home-moments { margin-bottom: 42px; padding-top: 26px; } .home-moments > h2 { font-size: calc(25px * var(--font-scale)); margin-bottom: 22px; } }
-
-/* Compact, legible service highlights over the hero photography. */
-.hero-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 22px;
-  color: white;
-  font-size: calc(13px * var(--font-scale));
-  font-weight: 500;
-  line-height: 1.4;
-}
-.hero-points span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 11px;
-  border: 1px solid #ffffff38;
-  border-radius: 9px;
-  background: #122d4266;
-}
-.hero-points span::before {
-  content: '';
-  flex: 0 0 9px;
-  width: 9px;
-  height: 5px;
-  border-left: 2px solid var(--sun);
-  border-bottom: 2px solid var(--sun);
-  transform: translateY(-2px) rotate(-45deg);
-}
-@media (max-width:760px) {
-  .hero-points {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(100%, 300px);
-    gap: 7px;
-    margin-top: 18px;
-    font-size: calc(12px * var(--font-scale));
-  }
-  .hero-points span { gap: 7px; padding: 8px 9px; }
-}
