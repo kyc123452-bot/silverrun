@@ -590,4 +590,4 @@ dt { font-weight: 600; font-size: 13px; } dd { margin: 0; font-size: 13px; }
 .home-moments > h2 { margin-bottom: 26px; font-size: calc(28px * var(--font-scale)); font-weight: 600; }
 @media (max-width:760px) { .home-moments { margin-bottom: 42px; padding-top: 26px; } .home-moments > h2 { font-size: calc(25px * var(--font-scale)); margin-bottom: 22px; } }
 
-.hero-kicker { font-family: "IBM Plex Sans KR", "Noto Sans KR", sans-serif; }
+.hero-copy { font-family: "IBM Plex Sans KR", "Noto Sans KR", sans-serif; }
