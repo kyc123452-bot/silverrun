@@ -47,16 +47,18 @@
       slide.setAttribute('aria-hidden', String(i !== active));
       buttons[i].setAttribute('aria-pressed', String(i === active));
     });
-    count.textContent = `${String(active + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    if (count) count.textContent = `${String(active + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
     schedule();
   };
   const syncPause = () => {
-    toggle.setAttribute('aria-label', paused ? '사진 자동 전환 재생' : '사진 자동 전환 일시정지');
-    toggle.firstElementChild.textContent = paused ? '▶' : 'Ⅱ';
+    if (toggle) {
+      toggle.setAttribute('aria-label', paused ? '사진 자동 전환 재생' : '사진 자동 전환 일시정지');
+      toggle.firstElementChild.textContent = paused ? '▶' : 'Ⅱ';
+    }
     schedule();
   };
   buttons.forEach((button, i) => button.addEventListener('click', () => show(i)));
-  toggle.addEventListener('click', () => { paused = !paused; syncPause(); });
+  toggle?.addEventListener('click', () => { paused = !paused; syncPause(); });
   motion.addEventListener('change', () => { paused = motion.matches; syncPause(); });
   document.addEventListener('visibilitychange', schedule);
   window.addEventListener('pagehide', () => clearTimeout(timer));
